@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Star, Clock, Play } from 'lucide-react';
+import { Shield, Star, Clock, Play, Pause, Volume2, VolumeX, X, } from 'lucide-react';
+import ConstructionVideo from './ConstructionVideo';
 
 const WeBuildToDeliver = () => {
+
   return (
     <section>
       <div className="max-w-7xl mx-auto px-6">
@@ -60,14 +62,13 @@ const WeBuildToDeliver = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <img
+            viewport={{ once: true }}          >
+            <ConstructionVideo />
+            {/* <img
               src="https://i.pinimg.com/736x/94/9b/6b/949b6bf9921ee07d4b0a27be207d442d.jpg"
               alt="Modular construction process"
               className="rounded-3xl shadow-2xl w-full h-[22rem] object-cover"
-            />
+            /> */}
 
             {/* Commented video section for future use */}
             {/*

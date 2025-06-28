@@ -291,7 +291,7 @@ const Home = () => {
             <p className="text-xl text-primary-100 max-w-2xl mx-auto">
               Join the construction revolution. Get your turnkey prefabricated building delivered in just 3-4 months with our proven process.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
                 to="/contact"
                 className="bg-white text-primary-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-construction-50 transition-all duration-300 transform hover:scale-105"
