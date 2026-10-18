@@ -19,8 +19,12 @@ export default function FeaturedProjects() {
 
   return (
     <>
-      <section id="portfolio" ref={ref} className="py-24 md:py-36 bg-white relative">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+      <section id="portfolio" ref={ref} className="py-24 md:py-36 bg-luxury-light text-[#0c0c0e] relative overflow-hidden border-b border-[#e8e4dc]">
+        {/* Rich Ambient Gold Glow */}
+        <div className="absolute top-1/3 left-10 w-[500px] h-[500px] bg-[#b8965a]/8 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-[#d6b67e]/6 rounded-full blur-[110px] pointer-events-none" />
+
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
           
           {/* Header */}
           <div className={`flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -28,15 +32,15 @@ export default function FeaturedProjects() {
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-px bg-[#b8965a]" />
                 <span className="text-[#b8965a] text-[10px] md:text-[11px] tracking-[0.35em] uppercase font-semibold">
-                  PORTFOLIO
+                  PORTFOLIO & ASSET DELIVERIES
                 </span>
               </div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light font-serif text-[#0c0c0e] leading-[1.1] mb-6">
-                Built around<br />
-                <span className="italic text-[#967945]">the experience.</span>
+                Translating ambition<br />
+                <span className="italic text-[#967945]">into enduring assets.</span>
               </h2>
               <p className="text-[#4a4742] text-sm sm:text-base font-light leading-relaxed">
-                Every project starts with a different brief, landscape and ambition. Our portfolio showcases modular retreats, eco-stays, farmhouses, villas and resort spaces—highlighting the construction system, materials and design decisions behind each build.
+                From luxury nature resorts and private retreats to turnkey modular hospitality typologies—every build reflects our commitment to rigorous feasibility, integrated BIM coordination, and single-point construction accountability.
               </p>
             </div>
 

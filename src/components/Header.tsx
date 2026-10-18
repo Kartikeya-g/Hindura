@@ -4,8 +4,9 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import { companyDetails } from '../data/siteData';
 
 const navLinks = [
-  { label: 'What We Build', to: '/#what-we-build' },
+  { label: 'Sectors', to: '/#sectors' },
   { label: 'Services', to: '/#services' },
+  { label: 'Prefabrication', to: '/#prefabrication' },
   { label: 'Projects', to: '/projects' },
   { label: 'About', to: '/about' },
   { label: 'Blog', to: '/blog' },

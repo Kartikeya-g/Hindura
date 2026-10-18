@@ -4,9 +4,12 @@ export interface ProjectEnquiryData {
   name: string;
   email: string;
   phone: string;
-  projectType: string;
-  location: string;
-  scale: string;
+  city?: string;
+  location?: string;
+  role?: string;
+  serviceInterest?: string;
+  projectType?: string;
+  scale?: string;
   message: string;
 }
 
@@ -36,9 +39,9 @@ export async function sendProjectEnquiry(data: ProjectEnquiryData): Promise<Subm
         from_name: data.name,
         from_email: data.email,
         phone: data.phone,
-        project_type: data.projectType,
-        location: data.location || 'Not Specified',
-        scale: data.scale || 'Not Specified',
+        city: data.city || data.location || 'Not Specified',
+        role: data.role || 'Not Specified',
+        service_interest: data.serviceInterest || data.projectType || 'Not Specified',
         message: data.message,
         to_email: DESTINATION_EMAIL,
         reply_to: data.email,
@@ -54,7 +57,7 @@ export async function sendProjectEnquiry(data: ProjectEnquiryData): Promise<Subm
         await emailjs.send(emailJsServiceId, emailJsTemplateUser, {
           to_name: data.name,
           to_email: data.email,
-          project_type: data.projectType,
+          project_type: data.serviceInterest || data.projectType || 'Advisory / Development',
           company_phone: '+91 98937-01528',
           company_email: DESTINATION_EMAIL,
         }, emailJsPublicKey);
@@ -69,7 +72,7 @@ export async function sendProjectEnquiry(data: ProjectEnquiryData): Promise<Subm
   // Primary zero-configuration submission gateway via FormSubmit to garvarihant@gmail.com
   try {
     const payload = {
-      _subject: `New Project Enquiry: ${data.name} (${data.projectType})`,
+      _subject: `New Mandate Enquiry: ${data.name} [${data.role || 'Client'}] - ${data.serviceInterest || data.projectType || 'General'}`,
       _template: 'table',
       _captcha: 'false',
       _replyto: data.email,
@@ -77,11 +80,11 @@ export async function sendProjectEnquiry(data: ProjectEnquiryData): Promise<Subm
       'Client Name': data.name,
       'Client Email': data.email,
       'Phone / WhatsApp': data.phone,
-      'Project Typology': data.projectType,
-      'Site Location': data.location || 'Not Specified',
-      'Approximate Scale': data.scale || 'Not Specified',
+      'City / Location': data.city || data.location || 'Not Specified',
+      'I am a': data.role || 'Not Specified',
+      'Service of Interest': data.serviceInterest || data.projectType || 'Not Specified',
       'Project Vision & Requirements': data.message,
-      _autoresponse: `Thank you for contacting Hindura Building Solutions. We have received your project details for "${data.projectType}" and our planning team will get in touch with you shortly. For immediate assistance, feel free to call +91 98937-01528.`
+      _autoresponse: `Thank you for contacting Hindura Building Solutions. We have received your mandate requirements and our advisory team will get in touch with you shortly. For immediate assistance, feel free to call +91 98937-01528.`
     };
 
     const response = await fetch(`https://formsubmit.co/ajax/${DESTINATION_EMAIL}`, {

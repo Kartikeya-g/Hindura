@@ -2,6 +2,7 @@ import Hero from '../components/Hero';
 import HomeIntro from '../components/HomeIntro';
 import WhatWeBuild from '../components/WhatWeBuild';
 import Services from '../components/Services';
+import PrefabSpecialisms from '../components/PrefabSpecialisms';
 import FeaturedProjects from '../components/FeaturedProjects';
 import HinduraLiving from '../components/HinduraLiving';
 import CTA from '../components/CTA';
@@ -14,6 +15,7 @@ export default function HomePage() {
       <HomeIntro />
       <WhatWeBuild />
       <Services />
+      <PrefabSpecialisms />
       <FeaturedProjects />
       <HinduraLiving />
       <CTA />

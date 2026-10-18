@@ -32,10 +32,10 @@ export default function WhyHindura() {
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light font-serif leading-[1.1] text-white mb-6">
             A better way to build<br />
-            <span className="italic text-[#d6b67e]">hospitality spaces.</span>
+            <span className="italic text-[#d6b67e]">across emerging markets.</span>
           </h2>
           <p className="text-white/80 text-base md:text-xl font-serif italic max-w-2xl leading-relaxed text-[#d6b67e]/90">
-            Hindura is built around a simple idea: construction should be planned as carefully as the experience it creates.
+            Hindura is built around a simple idea: development should be guided with the same institutional rigour as the capital invested in it.
           </p>
         </div>
 

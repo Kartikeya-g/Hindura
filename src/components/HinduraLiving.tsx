@@ -7,7 +7,7 @@ export default function HinduraLiving() {
   const { ref, inView } = useInView(0.12);
 
   return (
-    <section ref={ref} className="relative py-28 md:py-40 bg-[#0c0c0e] text-white overflow-hidden">
+    <section ref={ref} className="relative py-28 md:py-40 bg-luxury-dark text-white overflow-hidden">
       
       {/* Immersive Background Resort Photo */}
       <div className="absolute inset-0">
@@ -18,6 +18,9 @@ export default function HinduraLiving() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0e] via-[#0c0c0e]/80 to-[#0c0c0e]" />
       </div>
+
+      {/* Rich Ambient Gold Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#b8965a]/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12">
         <div className="max-w-4xl mx-auto text-center">

@@ -31,6 +31,8 @@ function ScrollToTop() {
 function AppLayout() {
   return (
     <>
+      {/* Luxury Tactile Architectural Paper Grain Overlay */}
+      <div className="luxury-grain-overlay" aria-hidden="true" />
       <ScrollToTop />
       <Header />
       <main>

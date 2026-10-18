@@ -1,21 +1,23 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Sparkles, Compass, ShieldCheck } from 'lucide-react';
-import { whatWeBuildData } from '../data/siteData';
+import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { sectorsData } from '../data/siteData';
 import { useInView } from '../hooks/useInView';
 
 export default function WhatWeBuild() {
   const { ref, inView } = useInView(0.1);
-  const [activeTab, setActiveTab] = useState(whatWeBuildData[0].id);
+  const [activeTab, setActiveTab] = useState(sectorsData[0].id);
 
-  const activeIndex = whatWeBuildData.findIndex((item) => item.id === activeTab);
-  const activeItem = whatWeBuildData[activeIndex] || whatWeBuildData[0];
+  const activeIndex = sectorsData.findIndex((item) => item.id === activeTab);
+  const activeItem = sectorsData[activeIndex] || sectorsData[0];
 
   return (
-    <section id="what-we-build" ref={ref} className="py-28 md:py-40 bg-[#0c0c0e] text-white relative overflow-hidden">
+    <section id="sectors" ref={ref} className="py-28 md:py-40 bg-luxury-dark text-white relative overflow-hidden">
+      <div id="what-we-build" className="absolute -top-24" />
       
-      {/* Subtle architectural background texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(#26262d_1px,transparent_1px)] [background-size:40px_40px] opacity-25 pointer-events-none" />
+      {/* Rich Architectural Atmospheric Lighting & Texture */}
+      <div className="absolute top-10 left-1/4 w-[600px] h-[600px] bg-[#b8965a]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#d6b67e]/6 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12">
         
@@ -25,27 +27,27 @@ export default function WhatWeBuild() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-px bg-[#b8965a]" />
               <span className="text-[#b8965a] text-[10px] md:text-[11px] tracking-[0.35em] uppercase font-semibold">
-                WHAT WE BUILD
+                WHERE WE WORK · SIX SECTORS
               </span>
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light font-serif leading-[1.08] text-white">
-              Spaces designed for living,<br />
-              <span className="italic text-[#d6b67e]">staying and escaping.</span>
+              Advisory and delivery<br />
+              <span className="italic text-[#d6b67e]">across six sectors.</span>
             </h2>
           </div>
 
           <p className="text-white/70 text-sm sm:text-base font-light max-w-md leading-relaxed">
-            Our focus is on hospitality-led projects and environments where architecture, comfort and operations need to work together.
+            Our advisory and delivery capability spans six sectors. Each is served by the same end-to-end model — land and legal diligence, planning, design, delivery, and, where relevant, operations.
           </p>
         </div>
 
         {/* Interactive Editorial Layout */}
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
-          {/* Left Column: Typologies Navigation Strip */}
+          {/* Left Column: Sectors Navigation Strip */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-3">
             <div className="space-y-2.5">
-              {whatWeBuildData.map((item, idx) => {
+              {sectorsData.map((item, idx) => {
                 const isActive = item.id === activeTab;
                 return (
                   <button
@@ -84,18 +86,18 @@ export default function WhatWeBuild() {
             {/* Quick Consultation Badge */}
             <div className="pt-6 border-t border-[#26262d] flex items-center justify-between">
               <div className="text-xs text-white/60">
-                Custom site planning available for every typology.
+                End-to-end model: land, design, delivery & operations.
               </div>
               <Link
                 to="/contact"
                 className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#b8965a] hover:text-white transition-colors"
               >
-                Inquire Site →
+                Inquire Sector →
               </Link>
             </div>
           </div>
 
-          {/* Right Column: Immersive Typology Display Card */}
+          {/* Right Column: Immersive Sector Display Card */}
           <div className="lg:col-span-7 bg-[#141417] border border-[#26262d] overflow-hidden flex flex-col justify-between shadow-2xl relative">
             
             {/* Image Preview with Atmospheric Overlay */}
@@ -110,10 +112,10 @@ export default function WhatWeBuild() {
               
               <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
                 <span className="text-[9px] tracking-[0.3em] uppercase bg-[#0c0c0e]/85 backdrop-blur-md px-3.5 py-1.5 border border-[#b8965a]/40 text-[#d6b67e] font-semibold">
-                  TYPOLOGY 0{activeIndex + 1}
+                  SECTOR 0{activeIndex + 1}
                 </span>
                 <span className="text-[9px] tracking-[0.2em] uppercase bg-[#0c0c0e]/80 backdrop-blur-md px-3 py-1 text-white/70">
-                  Prefabrication Ready
+                  Full-Spectrum Model
                 </span>
               </div>
 
@@ -127,18 +129,24 @@ export default function WhatWeBuild() {
               </div>
             </div>
 
-            {/* Typology Details Body */}
+            {/* Sector Details Body */}
             <div className="p-6 sm:p-10 space-y-6">
-              <p className="text-white/80 text-sm sm:text-base leading-relaxed font-light">
+              <p className="text-white/85 text-sm sm:text-base leading-relaxed font-light">
                 {activeItem.description}
               </p>
 
-              {/* Highlights Checklist */}
-              <div className="grid sm:grid-cols-3 gap-3 pt-4 border-t border-[#26262d]">
-                {activeItem.highlights.map((h, i) => (
-                  <div key={i} className="flex items-start gap-2 text-xs text-white/90 bg-[#1c1c22] p-3 border border-[#2a2a33]">
-                    <Sparkles size={13} className="text-[#b8965a] shrink-0 mt-0.5" />
-                    <span className="leading-snug">{h}</span>
+              {/* End-to-end scope note */}
+              <div className="p-4 bg-[#1a1a20] border-l-2 border-[#b8965a] text-xs text-white/80 leading-relaxed">
+                <span className="text-[#b8965a] font-semibold uppercase tracking-wider block mb-1">Our Mandate Scope:</span>
+                {activeItem.scope}
+              </div>
+
+              {/* Deliverables Checklist */}
+              <div className="grid sm:grid-cols-2 gap-3 pt-2">
+                {activeItem.deliverables.map((d, i) => (
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-white/90 bg-[#1c1c22] p-3 border border-[#2a2a33]">
+                    <CheckCircle2 size={14} className="text-[#b8965a] shrink-0 mt-0.5" />
+                    <span className="leading-snug">{d}</span>
                   </div>
                 ))}
               </div>
@@ -146,20 +154,20 @@ export default function WhatWeBuild() {
               {/* Action Buttons */}
               <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-t border-[#26262d]">
                 <Link
-                  to="/projects"
+                  to="/contact"
                   className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#b8965a] hover:bg-[#d6b67e] text-[#0c0c0e] font-semibold text-xs tracking-[0.2em] uppercase transition-colors"
                 >
-                  <span>Explore matching builds</span>
+                  <span>Inquire for {activeItem.title}</span>
                   <ArrowRight size={13} />
                 </Link>
 
-                <Link
-                  to="/contact"
+                <a
+                  href="#services"
                   className="inline-flex items-center justify-center gap-2 text-xs tracking-[0.2em] uppercase text-white/70 hover:text-[#b8965a] transition-colors"
                 >
-                  <span>Plan your property</span>
+                  <span>View service details</span>
                   <ArrowRight size={13} />
-                </Link>
+                </a>
               </div>
 
             </div>

@@ -6,8 +6,12 @@ export default function HomeIntro() {
   const { ref, inView } = useInView(0.15);
 
   return (
-    <section id="intro" ref={ref} className="py-24 md:py-36 bg-[#faf9f6] relative overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+    <section id="intro" ref={ref} className="py-24 md:py-36 bg-luxury-light text-[#0c0c0e] relative overflow-hidden border-b border-[#e8e4dc]">
+      {/* Rich Ambient Gold Glow */}
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#b8965a]/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-20 left-10 w-[400px] h-[400px] bg-[#d6b67e]/6 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Architectural Photo with Floating Accent Card */}
@@ -22,12 +26,12 @@ export default function HomeIntro() {
             </div>
 
             {/* Floating Architectural Badge */}
-            <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-[#0c0c0e] border border-[#b8965a] p-6 sm:p-8 max-w-[260px] shadow-2xl text-white">
+            <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-[#0c0c0e] border border-[#b8965a] p-6 sm:p-8 max-w-[280px] shadow-2xl text-white">
               <div className="text-[10px] tracking-[0.3em] uppercase text-[#b8965a] font-medium mb-2">
-                Core Focus
+                Unified Mandate
               </div>
               <div className="text-xl font-serif font-light leading-snug">
-                Prefabrication & Hospitality Development
+                Land · Design · Delivery · Operations
               </div>
             </div>
           </div>
@@ -38,21 +42,24 @@ export default function HomeIntro() {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-px bg-[#b8965a]" />
               <span className="text-[#b8965a] text-[11px] tracking-[0.35em] uppercase font-semibold">
-                WHERE WE WORK
+                WHY HINDURA WAS FOUNDED
               </span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-[#0c0c0e] leading-[1.1] mb-8 font-serif">
-              Construction with a<br />
-              <span className="italic text-[#967945]">clearer point of view.</span>
+              At the confluence of<br />
+              <span className="italic text-[#967945]">land, design, and delivery.</span>
             </h2>
 
-            <div className="space-y-6 text-[#4a4742] text-base md:text-lg leading-relaxed font-light mb-10">
+            <div className="space-y-5 text-[#4a4742] text-base md:text-lg leading-relaxed font-light mb-10">
               <p className="text-[#1c1c21] font-normal leading-relaxed">
-                A great hospitality project is more than a structure. It is the setting for a guest’s first impression, a quiet morning, a long conversation and a reason to return. Hindura helps turn that experience into a buildable reality.
+                Hindura Building Solutions was founded in Indore because we believe Tier-II and Tier-III India is where the built environment can still be shaped thoughtfully — before land, capital, and ambition outrun good judgment.
               </p>
               <p>
-                We work with owners, developers and project teams from early discovery through design coordination, fabrication, site assembly and handover. Our approach combines modular thinking with the flexibility needed to create spaces that feel considered, distinctive and built for their surroundings.
+                Our own backgrounds sit at the intersection of land, design, and delivery, and Hindura exists to bring those disciplines together under one roof, for clients who would otherwise have to assemble them one consultant at a time.
+              </p>
+              <p className="text-sm text-[#787570]">
+                We accompany projects from the earliest idea to full operational maturity — advising landowners, developers, and institutions, and where needed, building alongside them.
               </p>
             </div>
 
@@ -63,8 +70,8 @@ export default function HomeIntro() {
                   <Compass size={16} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#0c0c0e] mb-1">Thoughtful Planning</h4>
-                  <p className="text-[11px] text-[#787570] leading-snug">Site-specific discovery and modular design alignment.</p>
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#0c0c0e] mb-1">Land & Diligence</h4>
+                  <p className="text-[11px] text-[#787570] leading-snug">Site identification, permissible-use assessment & RERA compliance.</p>
                 </div>
               </div>
 
@@ -73,8 +80,8 @@ export default function HomeIntro() {
                   <Cpu size={16} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#0c0c0e] mb-1">Off-Site Fabrication</h4>
-                  <p className="text-[11px] text-[#787570] leading-snug">Controlled pre-assembly minimizing on-site delays.</p>
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#0c0c0e] mb-1">Design & Prefab</h4>
+                  <p className="text-[11px] text-[#787570] leading-snug">Architectural planning coordinated with off-site modular systems.</p>
                 </div>
               </div>
 
@@ -83,8 +90,8 @@ export default function HomeIntro() {
                   <ShieldCheck size={16} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#0c0c0e] mb-1">On-Site Execution</h4>
-                  <p className="text-[11px] text-[#787570] leading-snug">Rapid precision assembly with unified accountability.</p>
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#0c0c0e] mb-1">Delivery & PMC</h4>
+                  <p className="text-[11px] text-[#787570] leading-snug">Dedicated execution oversight with single-point accountability.</p>
                 </div>
               </div>
             </div>
@@ -94,15 +101,15 @@ export default function HomeIntro() {
                 to="/about"
                 className="inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase font-semibold text-[#0c0c0e] hover:text-[#b8965a] transition-colors border-b-2 border-[#0c0c0e] pb-1 hover:border-[#b8965a]"
               >
-                <span>About our vision</span>
+                <span>Read our founding thesis</span>
                 <ArrowRight size={14} />
               </Link>
 
               <Link
-                to="/projects"
+                to="/#services"
                 className="inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase font-medium text-[#787570] hover:text-[#0c0c0e] transition-colors"
               >
-                <span>View builds</span>
+                <span>Explore all services</span>
                 <ArrowRight size={13} />
               </Link>
             </div>

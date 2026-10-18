@@ -22,7 +22,7 @@ export default function BlogPage() {
           </h1>
           
           <p className="text-[#4a4742] text-base md:text-lg font-light leading-relaxed max-w-2xl mb-12">
-            We are working on a dedicated space to share our thoughts on prefabricated hospitality, sustainable architecture, and the future of resort construction. Check back later for our latest updates and industry insights.
+            We are working on a dedicated space to share our research and market intelligence on real estate development advisory, land due diligence, Tier-II & III growth corridors, and prefabricated construction. Check back soon for our latest publications and industry reports.
           </p>
 
           <Link

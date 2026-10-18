@@ -38,7 +38,7 @@ export default function Hero() {
   const slide = heroSlides[current];
 
   return (
-    <section className="relative h-screen min-h-[720px] max-h-[1080px] bg-[#0c0c0e] overflow-hidden flex items-end">
+    <section className="relative h-screen min-h-[720px] max-h-[1080px] bg-luxury-dark overflow-hidden flex items-end">
       {/* Background Image Carousel with Vignette */}
       <div className="absolute inset-0">
         {heroSlides.map((s, index) => (
@@ -70,19 +70,19 @@ export default function Hero() {
           <div className="inline-flex items-center gap-3 mb-6 px-3.5 py-1.5 border border-[#b8965a]/40 bg-[#0c0c0e]/70 backdrop-blur-sm">
             <div className="w-2 h-2 rounded-full bg-[#b8965a] animate-pulse" />
             <span className="text-[#b8965a] text-[10px] md:text-[11px] tracking-[0.35em] uppercase font-semibold">
-              INDORE · INDIA · BUILDING FOR WHAT'S NEXT
+              INDORE · INDIA · ESTABLISHED 2024
             </span>
           </div>
 
           {/* Main Headline */}
           <h1 className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light leading-[1.04] mb-8 font-serif">
-            We build places<br />
-            <span className="italic font-normal text-[#d6b67e]">people remember.</span>
+            Innovation in<br />
+            <span className="italic font-normal text-[#d6b67e]">every structure.</span>
           </h1>
 
           {/* Subtitle / Positioning statement */}
-          <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-2xl">
-            From the first idea to the finished space, Hindura brings together planning, design, prefabricated construction and on-site execution to create resorts, hotels, farmhouses and hospitality environments with character.
+          <p className="text-white/85 text-base md:text-lg font-light leading-relaxed mb-10 max-w-2xl">
+            Hindura Building Solutions is a full-spectrum real estate development advisory and construction consultancy headquartered in Indore. We work at the confluence of land, design, and delivery — advising landowners, developers, and institutions, and where needed, building alongside them.
           </p>
 
           {/* CTAs */}
@@ -96,10 +96,10 @@ export default function Hero() {
             </Link>
 
             <a
-              href="#what-we-build"
+              href="#sectors"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/30 hover:border-[#b8965a] text-white hover:text-[#b8965a] text-xs tracking-[0.25em] uppercase font-medium transition-all duration-300 backdrop-blur-xs"
             >
-              <span>Explore our capabilities</span>
+              <span>Explore our sectors</span>
               <ArrowRight size={14} />
             </a>
           </div>

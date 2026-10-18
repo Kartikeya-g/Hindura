@@ -36,30 +36,35 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2: Navigation Links */}
+          {/* Col 2: Navigation Links (Exact from Document Page 5) */}
           <div className="lg:col-span-3 space-y-4">
             <div className="text-[10px] tracking-[0.3em] uppercase text-[#b8965a] font-semibold">
-              Explore Hindura
+              Quick Links
             </div>
             <ul className="space-y-2.5 text-xs text-white/75">
               <li>
-                <a href="/#what-we-build" className="hover:text-[#b8965a] transition-colors">
-                  What We Build
-                </a>
+                <Link to="/about" className="hover:text-[#b8965a] transition-colors">
+                  About Us
+                </Link>
               </li>
               <li>
                 <a href="/#services" className="hover:text-[#b8965a] transition-colors">
-                  Services Suite
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="/#sectors" className="hover:text-[#b8965a] transition-colors">
+                  Sectors
+                </a>
+              </li>
+              <li>
+                <a href="/#prefabrication" className="hover:text-[#b8965a] transition-colors">
+                  Prefabricated Construction
                 </a>
               </li>
               <li>
                 <Link to="/projects" className="hover:text-[#b8965a] transition-colors">
-                  Featured Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-[#b8965a] transition-colors">
-                  About & Leadership
+                  Projects
                 </Link>
               </li>
               <li>
@@ -69,7 +74,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/contact" className="hover:text-[#b8965a] transition-colors">
-                  Start a Project
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-[#b8965a] transition-colors text-white/50">
+                  Privacy Policy
                 </Link>
               </li>
             </ul>
@@ -115,7 +125,7 @@ export default function Footer() {
                 to="/contact"
                 className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase font-semibold text-[#b8965a] hover:text-[#d6b67e] transition-colors"
               >
-                <span>Request Project Proposal</span>
+                <span>Engage our advisory team</span>
                 <ArrowRight size={13} />
               </Link>
             </div>
@@ -124,13 +134,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Credits */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40 font-light">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50 font-light">
           <div>
             © {currentYear} {companyDetails.name}. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
-            <span>Resort Construction & Prefabricated Solutions</span>
-            <span>Indore · India</span>
+            <span>Real Estate Development Advisory · Construction Consultancy · PMC</span>
+            <span>Indore · India · Established 2024</span>
           </div>
         </div>
 

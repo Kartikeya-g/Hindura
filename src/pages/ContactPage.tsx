@@ -57,15 +57,15 @@ export default function ContactPage() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-px bg-[#b8965a]" />
               <span className="text-[#b8965a] text-[10px] md:text-[11px] tracking-[0.35em] uppercase font-semibold">
-                START A CONVERSATION
+                START A CONVERSATION · HINDURA INDORE
               </span>
             </div>
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-light font-serif leading-[1.08] text-white mb-6">
-              Let's discuss<br />
-              <span className="italic text-[#d6b67e]">your next destination.</span>
+              Get in<br />
+              <span className="italic text-[#d6b67e]">Touch.</span>
             </h1>
-            <p className="text-white/80 text-base md:text-lg font-light leading-relaxed">
-              Tell us what you are planning. Share your site, project type, approximate scale and what you want the finished experience to feel like. We will help you identify the right next step.
+            <p className="text-white/85 text-base md:text-lg font-light leading-relaxed">
+              Whether you have land to evaluate, a project to plan, or an asset to lease, tell us where you are in the journey. Engage us for a single mandate, or for the full journey.
             </p>
           </div>
         </div>

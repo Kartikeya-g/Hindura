@@ -35,15 +35,15 @@ export default function ProjectsPage() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-px bg-[#b8965a]" />
               <span className="text-[#b8965a] text-[10px] md:text-[11px] tracking-[0.35em] uppercase font-semibold">
-                PORTFOLIO
+                PORTFOLIO & ASSET DELIVERIES
               </span>
             </div>
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-light font-serif leading-[1.08] text-white mb-6">
-              Built around<br />
-              <span className="italic text-[#d6b67e]">the experience.</span>
+              Translating ambition<br />
+              <span className="italic text-[#d6b67e]">into enduring assets.</span>
             </h1>
             <p className="text-white/80 text-base md:text-lg font-light leading-relaxed">
-              Every project starts with a different brief, landscape and ambition. Our portfolio showcases modular retreats, eco-stays, farmhouses, villas and resort spaces—highlighting the construction system, materials and design decisions behind each build.
+              Every engagement starts with land intelligence, market feasibility, and a distinct commercial brief. Our portfolio demonstrates how Hindura integrates architecture, off-site prefabrication, and rigorous PMC across hospitality destinations, bespoke retreats, and emerging development corridors.
             </p>
           </div>
         </div>

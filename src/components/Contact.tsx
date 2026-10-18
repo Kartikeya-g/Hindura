@@ -8,16 +8,16 @@ export default function Contact() {
   const { ref, inView } = useInView(0.1);
   const [form, setForm] = useState({
     name: '',
-    email: '',
     phone: '',
-    projectType: 'Nature-Led Resort / Eco-Stay',
-    location: '',
-    scale: '',
+    email: '',
+    city: '',
+    role: 'landowner',
+    serviceInterest: 'Advisory & Planning (Land Intelligence, RERA, Feasibility)',
     message: ''
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [submittedData, setSubmittedData] = useState<{ name: string; email: string; projectType: string } | null>(null);
+  const [submittedData, setSubmittedData] = useState<{ name: string; email: string; serviceInterest: string } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +25,17 @@ export default function Contact() {
     setLoading(true);
     setError(null);
 
-    const result = await sendProjectEnquiry(form);
+    const result = await sendProjectEnquiry({
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      city: form.city,
+      location: form.city,
+      role: form.role,
+      serviceInterest: form.serviceInterest,
+      projectType: form.serviceInterest,
+      message: form.message
+    });
     console.log('[Contact Form] Submission Result:', result);
 
     setLoading(false);
@@ -33,16 +43,16 @@ export default function Contact() {
       setSubmittedData({
         name: form.name,
         email: form.email,
-        projectType: form.projectType
+        serviceInterest: form.serviceInterest
       });
       // Reset form fields
       setForm({
         name: '',
-        email: '',
         phone: '',
-        projectType: 'Nature-Led Resort / Eco-Stay',
-        location: '',
-        scale: '',
+        email: '',
+        city: '',
+        role: 'landowner',
+        serviceInterest: 'Advisory & Planning (Land Intelligence, RERA, Feasibility)',
         message: ''
       });
     } else {
@@ -51,8 +61,12 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-24 md:py-36 bg-white relative">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+    <section id="contact" ref={ref} className="py-24 md:py-36 bg-luxury-light text-[#0c0c0e] relative overflow-hidden">
+      {/* Rich Ambient Gold Glow */}
+      <div className="absolute top-1/4 right-10 w-[550px] h-[550px] bg-[#b8965a]/8 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-[#d6b67e]/6 rounded-full blur-[110px] pointer-events-none" />
+
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
           
           {/* Left Column: Contact Information */}
@@ -66,12 +80,12 @@ export default function Contact() {
               </div>
 
               <h2 className="text-4xl sm:text-5xl font-light font-serif text-[#0c0c0e] leading-[1.1] mb-6">
-                Have a site, an idea, or a resort<br />
-                <span className="italic text-[#967945]">waiting to be built?</span>
+                Tell us where you are<br />
+                <span className="italic text-[#967945]">in the journey.</span>
               </h2>
 
               <p className="text-[#4a4742] text-sm sm:text-base font-light leading-relaxed mb-10">
-                Tell us what you are planning. Share your site, project type, approximate scale and what you want the finished experience to feel like. We will help you identify the right next step.
+                Whether you have land to evaluate, a project to plan, or an asset to lease, tell us where you are in the journey. Engage us for a single mandate, or for the full journey.
               </p>
 
               {/* Direct Details Card */}
@@ -88,6 +102,9 @@ export default function Contact() {
                     </div>
                     <div className="text-sm text-[#0c0c0e] font-medium leading-relaxed">
                       {companyDetails.office}
+                    </div>
+                    <div className="text-xs text-[#787570] mt-0.5">
+                      Hindura Building Solutions Pvt. Ltd., Indore, Madhya Pradesh, India
                     </div>
                   </div>
                 </div>
@@ -153,7 +170,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right Column: Project Enquiry Form */}
+          {/* Right Column: Project Enquiry Form (Aligned with Page 5 of Document) */}
           <div className={`lg:col-span-7 bg-[#faf9f6] border border-[#e4e1db] p-8 sm:p-12 shadow-sm transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             
             {submittedData ? (
@@ -162,17 +179,17 @@ export default function Contact() {
                   <CheckCircle2 size={32} />
                 </div>
                 <div className="text-xs tracking-[0.25em] uppercase text-[#b8965a] font-semibold">
-                  Enquiry Successfully Sent
+                  Enquiry Successfully Received
                 </div>
                 <h3 className="text-3xl sm:text-4xl font-serif font-light text-[#0c0c0e]">
                   Thank you, {submittedData.name}.
                 </h3>
                 <div className="space-y-3 text-sm text-[#4a4742] max-w-lg mx-auto leading-relaxed">
                   <p>
-                    Your project details for <strong className="text-[#0c0c0e]">{submittedData.projectType}</strong> have been received and forwarded directly to our founders and planning team at <span className="font-semibold text-[#0c0c0e]">garvarihant@gmail.com</span>.
+                    Your brief for <strong className="text-[#0c0c0e]">{submittedData.serviceInterest}</strong> has been received and forwarded directly to our advisory and leadership team in Indore.
                   </p>
                   <p className="text-xs text-[#787570]">
-                    A confirmation acknowledgement has been dispatched to <strong className="text-[#0c0c0e]">{submittedData.email}</strong>. Our Indore office will review your requirements and reach out within 24 hours.
+                    A copy of your message was dispatched to <strong className="text-[#0c0c0e]">{submittedData.email}</strong>. Our managing directors and advisory leads will review your inquiry and connect with you within 24 hours.
                   </p>
                 </div>
 
@@ -188,7 +205,7 @@ export default function Contact() {
                     href={`tel:${companyDetails.phonePrimary}`}
                     className="w-full sm:w-auto px-8 py-3.5 bg-white border border-[#b8965a] text-[#b8965a] hover:bg-[#b8965a] hover:text-white text-xs tracking-[0.2em] uppercase font-semibold transition-all duration-300"
                   >
-                    Call us directly
+                    Call our office
                   </a>
                 </div>
               </div>
@@ -196,11 +213,14 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <div className="text-xs tracking-[0.2em] uppercase text-[#b8965a] font-semibold mb-1">
-                    Project Brief
+                    Direct Mandate Inquiry
                   </div>
                   <h3 className="text-2xl font-serif font-light text-[#0c0c0e]">
-                    Start a Conversation
+                    Get in Touch
                   </h3>
+                  <p className="text-xs text-[#787570] mt-1">
+                    Tell us where you are in the journey and we will tell you how we can help.
+                  </p>
                 </div>
 
                 {error && (
@@ -218,7 +238,7 @@ export default function Contact() {
                     <input
                       type="text"
                       required
-                      placeholder="Your name"
+                      placeholder="Your full name"
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       className="w-full bg-white border border-[#e4e1db] px-4 py-3 text-sm text-[#0c0c0e] focus:outline-none focus:border-[#b8965a] transition-colors"
@@ -228,24 +248,7 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-[10px] tracking-[0.2em] uppercase text-[#787570] font-semibold mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="name@company.com"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="w-full bg-white border border-[#e4e1db] px-4 py-3 text-sm text-[#0c0c0e] focus:outline-none focus:border-[#b8965a] transition-colors"
-                      disabled={loading}
-                    />
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-[10px] tracking-[0.2em] uppercase text-[#787570] font-semibold mb-2">
-                      Phone / WhatsApp *
+                      Phone Number *
                     </label>
                     <input
                       type="tel"
@@ -257,66 +260,102 @@ export default function Contact() {
                       disabled={loading}
                     />
                   </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-[10px] tracking-[0.2em] uppercase text-[#787570] font-semibold mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="name@organization.com"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      className="w-full bg-white border border-[#e4e1db] px-4 py-3 text-sm text-[#0c0c0e] focus:outline-none focus:border-[#b8965a] transition-colors"
+                      disabled={loading}
+                    />
+                  </div>
 
                   <div>
                     <label className="block text-[10px] tracking-[0.2em] uppercase text-[#787570] font-semibold mb-2">
-                      Project Typology
+                      City *
                     </label>
-                    <select
-                      value={form.projectType}
-                      onChange={(e) => setForm({ ...form, projectType: e.target.value })}
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Indore, Bhopal, Ujjain, Mumbai"
+                      value={form.city}
+                      onChange={(e) => setForm({ ...form, city: e.target.value })}
                       className="w-full bg-white border border-[#e4e1db] px-4 py-3 text-sm text-[#0c0c0e] focus:outline-none focus:border-[#b8965a] transition-colors"
                       disabled={loading}
-                    >
-                      <option value="Nature-Led Resort / Eco-Stay">Nature-Led Resort / Eco-Stay</option>
-                      <option value="Boutique Hotel">Boutique Hotel</option>
-                      <option value="Farmhouse & Private Retreat">Farmhouse & Private Retreat</option>
-                      <option value="Modular Cabins / Glamping Suites">Modular Cabins / Glamping Suites</option>
-                      <option value="Geodesic Dome Stay">Geodesic Dome Stay</option>
-                      <option value="Hospitality Extension (Villas / Cottages)">Hospitality Extension (Villas / Cottages)</option>
-                      <option value="Other Prefab Construction">Other Prefab Construction</option>
-                    </select>
+                    />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-[10px] tracking-[0.2em] uppercase text-[#787570] font-semibold mb-2">
-                      Site Location (City / State)
+                      I am a *
                     </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. Indore, Madhya Pradesh"
-                      value={form.location}
-                      onChange={(e) => setForm({ ...form, location: e.target.value })}
+                    <select
+                      value={form.role}
+                      onChange={(e) => setForm({ ...form, role: e.target.value })}
                       className="w-full bg-white border border-[#e4e1db] px-4 py-3 text-sm text-[#0c0c0e] focus:outline-none focus:border-[#b8965a] transition-colors"
                       disabled={loading}
-                    />
+                    >
+                      <option value="landowner">Landowner</option>
+                      <option value="developer">Developer</option>
+                      <option value="institution">Institution / Investment Fund</option>
+                      <option value="operator">Operator (Hotel, Resort, Wellness)</option>
+                      <option value="individual">Individual Investor / Other</option>
+                    </select>
                   </div>
 
                   <div>
                     <label className="block text-[10px] tracking-[0.2em] uppercase text-[#787570] font-semibold mb-2">
-                      Approximate Scale / Area
+                      Service of Interest *
                     </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. 10 Villas / 15,000 sq ft / 2 Acres"
-                      value={form.scale}
-                      onChange={(e) => setForm({ ...form, scale: e.target.value })}
+                    <select
+                      value={form.serviceInterest}
+                      onChange={(e) => setForm({ ...form, serviceInterest: e.target.value })}
                       className="w-full bg-white border border-[#e4e1db] px-4 py-3 text-sm text-[#0c0c0e] focus:outline-none focus:border-[#b8965a] transition-colors"
                       disabled={loading}
-                    />
+                    >
+                      <option value="Advisory & Planning (Land Intelligence, RERA, Feasibility)">
+                        Advisory & Planning (Land, RERA, Feasibility)
+                      </option>
+                      <option value="Design & Construction (Architectural & Engineering)">
+                        Design & Construction (Architectural & BIM)
+                      </option>
+                      <option value="Prefabricated Construction (Cottages, Pods, Treehouses)">
+                        Prefabricated Construction (Cottages, Pods, Treehouses)
+                      </option>
+                      <option value="Project Management Consultancy (PMC)">
+                        Project Management Consultancy (PMC)
+                      </option>
+                      <option value="Asset & Facility Management">
+                        Asset & Facility Management
+                      </option>
+                      <option value="Leasing & Operator Advisory">
+                        Leasing & Operator Advisory
+                      </option>
+                      <option value="Full Journey Mandate (End-to-End)">
+                        Full Journey Mandate (End-to-End)
+                      </option>
+                    </select>
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-[10px] tracking-[0.2em] uppercase text-[#787570] font-semibold mb-2">
-                    Project Vision & Requirements *
+                    Message / Project Brief *
                   </label>
                   <textarea
                     rows={4}
                     required
-                    placeholder="Tell us what you are planning. Share your site conditions, timeline, and what you want the finished guest experience to feel like..."
+                    placeholder="Tell us about your land, project idea, or asset. Share location, scale, and timeline..."
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     className="w-full bg-white border border-[#e4e1db] px-4 py-3 text-sm text-[#0c0c0e] focus:outline-none focus:border-[#b8965a] transition-colors resize-none"
@@ -332,11 +371,11 @@ export default function Contact() {
                   {loading ? (
                     <>
                       <Loader2 size={15} className="animate-spin text-[#b8965a]" />
-                      <span>Sending enquiry...</span>
+                      <span>Transmitting mandate details...</span>
                     </>
                   ) : (
                     <>
-                      <span>Submit project enquiry</span>
+                      <span>Submit Inquiry</span>
                       <ArrowRight size={14} />
                     </>
                   )}

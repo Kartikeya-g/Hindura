@@ -1,36 +1,29 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Compass, Layers, Box, Factory, Hammer, Shield, Flame, Eye, Sparkles, Check } from 'lucide-react';
-import { servicesData } from '../data/siteData';
+import { ArrowRight, Compass, Layers, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
+import { serviceDivisions } from '../data/siteData';
 import { useInView } from '../hooks/useInView';
 
-const iconMap: Record<string, React.ElementType> = {
-  Compass,
-  Layers,
-  Box,
-  Factory,
-  Hammer,
-  Shield,
-  Flame,
-  Eye,
-  Sparkles
+const divisionIcons: Record<string, React.ElementType> = {
+  'advisory-planning': Compass,
+  'design-construction': Layers,
+  'project-asset-management': ShieldCheck,
+  'leasing-operator-advisory': Sparkles
 };
-
-const serviceCategories = ['All Phases', 'Planning & Design', 'Prefabrication & Fabrication', 'Envelope & Execution', 'Hospitality'] as const;
 
 export default function Services() {
   const { ref, inView } = useInView(0.1);
-  const [activeCategory, setActiveCategory] = useState<string>('All Phases');
+  const [activeDivision, setActiveDivision] = useState<string>(serviceDivisions[0].id);
 
-  const filteredServices = activeCategory === 'All Phases'
-    ? servicesData
-    : servicesData.filter((s) => s.category === activeCategory);
+  const currentDivision = serviceDivisions.find((d) => d.id === activeDivision) || serviceDivisions[0];
+  const Icon = divisionIcons[currentDivision.id] || Compass;
 
   return (
-    <section id="services" ref={ref} className="py-28 md:py-40 bg-[#faf9f6] text-[#0c0c0e] relative overflow-hidden">
+    <section id="services" ref={ref} className="py-28 md:py-40 bg-luxury-light text-[#0c0c0e] relative overflow-hidden border-b border-[#e8e4dc]">
       
-      {/* Subtle background glow */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#b8965a]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Rich Ambient Gold Glow */}
+      <div className="absolute top-1/4 right-0 w-[550px] h-[550px] bg-[#b8965a]/9 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-[#d6b67e]/6 rounded-full blur-[110px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
         
@@ -40,107 +33,122 @@ export default function Services() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-px bg-[#b8965a]" />
               <span className="text-[#b8965a] text-[10px] md:text-[11px] tracking-[0.35em] uppercase font-semibold">
-                OUR SERVICES
+                WHAT WE DO · OUR SERVICES
               </span>
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light font-serif leading-[1.08] text-[#0c0c0e]">
-              From concept<br />
-              <span className="italic text-[#967945]">to completion.</span>
+              From earliest idea<br />
+              <span className="italic text-[#967945]">to operational maturity.</span>
             </h2>
           </div>
 
           <p className="text-[#4a4742] text-sm sm:text-base font-light max-w-md leading-relaxed">
-            Hindura can support a project at the stage where you are today—whether that means defining the opportunity, planning the build, fabricating components or coordinating final execution.
+            We accompany projects from the earliest idea to full operational maturity. Engage us for a single mandate, or for the full journey.
           </p>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 mb-12">
-          {serviceCategories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`text-[10px] tracking-[0.2em] uppercase font-medium px-4 py-2.5 transition-all duration-300 border ${
-                activeCategory === cat
-                  ? 'bg-[#0c0c0e] text-white border-[#0c0c0e] font-semibold shadow-md'
-                  : 'bg-white text-[#4a4742] border-[#e4e1db] hover:border-[#b8965a]/60 hover:text-[#0c0c0e] shadow-sm'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* 9 Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredServices.map((service, index) => {
-            const Icon = iconMap[service.icon] || Layers;
+        {/* 4 Division Navigation Tabs */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
+          {serviceDivisions.map((div, idx) => {
+            const isActive = div.id === activeDivision;
+            const DivIcon = divisionIcons[div.id] || Compass;
             return (
-              <div
-                key={service.id}
-                className="bg-white border border-[#e4e1db] hover:border-[#b8965a]/60 p-8 flex flex-col justify-between group transition-all duration-300 shadow-sm hover:shadow-xl"
-                style={{ transitionDelay: `${index * 40}ms` }}
+              <button
+                key={div.id}
+                onClick={() => setActiveDivision(div.id)}
+                className={`p-5 text-left border transition-all duration-300 flex flex-col justify-between group ${
+                  isActive
+                    ? 'bg-[#0c0c0e] text-white border-[#0c0c0e] shadow-xl'
+                    : 'bg-white text-[#141417] border-[#e4e1db] hover:border-[#b8965a]/60 shadow-sm'
+                }`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-mono text-[#b8965a] tracking-widest font-bold">
-                      PHASE {service.number}
+                  <div className="flex items-center justify-between mb-3">
+                    <span className={`text-[10px] font-mono font-bold tracking-widest ${isActive ? 'text-[#d6b67e]' : 'text-[#b8965a]'}`}>
+                      PILLAR 0{idx + 1}
                     </span>
-                    <div className="w-10 h-10 border border-[#e4e1db] group-hover:border-[#b8965a]/50 flex items-center justify-center text-[#b8965a] group-hover:bg-[#faf9f6] transition-colors">
-                      <Icon size={18} />
-                    </div>
+                    <DivIcon size={16} className={isActive ? 'text-[#d6b67e]' : 'text-[#787570]'} />
                   </div>
-
-                  <div className="text-[9px] tracking-[0.25em] uppercase text-[#4a4742]/60 font-semibold mb-2">
-                    {service.category}
-                  </div>
-
-                  <h3 className="text-2xl font-light font-serif text-[#0c0c0e] mb-4 group-hover:text-[#967945] transition-colors">
-                    {service.title}
+                  <h3 className={`text-base sm:text-lg font-serif font-light ${isActive ? 'text-white' : 'text-[#0c0c0e]'}`}>
+                    {div.title}
                   </h3>
-
-                  <p className="text-[#4a4742] text-xs sm:text-sm leading-relaxed font-light mb-6">
-                    {service.description}
-                  </p>
-
-                  {/* Service Checklist */}
-                  {service.details && (
-                    <div className="space-y-2 pt-4 border-t border-[#e4e1db] mb-6">
-                      {service.details.map((detail, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-[#4a4742]">
-                          <Check size={12} className="text-[#b8965a] shrink-0" />
-                          <span>{detail}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
                 </div>
 
-                <div className="pt-4 border-t border-[#e4e1db] flex items-center justify-between">
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-semibold text-[#b8965a] group-hover:text-[#0c0c0e] transition-colors"
-                  >
-                    <span>Inquire for project</span>
-                    <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                <div className={`text-[11px] mt-4 flex items-center gap-1.5 font-medium ${isActive ? 'text-[#d6b67e]' : 'text-[#787570] group-hover:text-[#0c0c0e]'}`}>
+                  <span>{div.services.length} Specialisms</span>
+                  <ArrowRight size={11} />
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>
 
+        {/* Active Division Detailed Showcase */}
+        <div className="bg-white border border-[#e4e1db] p-8 sm:p-12 lg:p-14 shadow-sm mb-16">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-[#e4e1db] mb-10">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Icon size={18} className="text-[#b8965a]" />
+                <span className="text-[10px] tracking-[0.25em] uppercase text-[#b8965a] font-semibold">
+                  Comprehensive Capability
+                </span>
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-serif font-light text-[#0c0c0e]">
+                {currentDivision.title}
+              </h3>
+            </div>
+            <p className="text-sm text-[#4a4742] max-w-lg leading-relaxed font-light">
+              {currentDivision.summary}
+            </p>
+          </div>
+
+          {/* Services Grid for Active Division */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            {currentDivision.services.map((srv, index) => (
+              <div
+                key={srv.name}
+                className="bg-[#faf9f6] border border-[#e4e1db] p-6 hover:border-[#b8965a] transition-colors group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-mono font-bold text-[#b8965a]">
+                      SERVICE 0{index + 1}
+                    </span>
+                    <CheckCircle2 size={15} className="text-[#b8965a]" />
+                  </div>
+                  <h4 className="text-xl font-serif font-light text-[#0c0c0e] mb-2 group-hover:text-[#967945] transition-colors">
+                    {srv.name}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-[#4a4742] leading-relaxed font-light">
+                    {srv.description}
+                  </p>
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-[#e4e1db] flex items-center justify-between">
+                  <Link
+                    to="/contact"
+                    className="text-[10px] tracking-[0.2em] uppercase font-semibold text-[#b8965a] group-hover:text-[#0c0c0e] transition-colors flex items-center gap-1.5"
+                  >
+                    <span>Inquire for {srv.name}</span>
+                    <ArrowRight size={11} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Integrated Consultation Banner */}
-        <div className="mt-16 bg-[#0c0c0e] border border-[#0c0c0e] p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+        <div className="bg-[#0c0c0e] border border-[#0c0c0e] p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
           <div className="max-w-2xl">
             <div className="text-[10px] tracking-[0.3em] uppercase text-[#b8965a] font-semibold mb-2">
-              Ready to Scope Your Build?
+              Ready to Scope Your Mandate?
             </div>
             <h4 className="text-2xl sm:text-3xl font-serif font-light text-white mb-2">
-              Start with Discovery & Feasibility
+              Start with Land Diligence & Feasibility
             </h4>
             <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-light">
-              Whether you are evaluating a raw parcel of land or expanding an operational resort, our Indore team will help map the optimal modular strategy and budget breakdown.
+              Whether you are evaluating a raw land parcel in Central India, seeking statutory permissions, or planning a turnkey resort or industrial build, Hindura provides end-to-end guidance.
             </p>
           </div>
 

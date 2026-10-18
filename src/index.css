@@ -74,3 +74,49 @@ body {
 .animate-fade-in {
   animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* ==========================================================================
+   Luxury Architectural Texture System
+   ========================================================================== */
+
+/* Tactile Vellum & Museum Paper Grain Overlay */
+.luxury-grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Deep Obsidian Luxury Dark Texture: Multi-layered ambient lighting, draft mesh & gold shimmer */
+.bg-luxury-dark {
+  background-color: #0c0c0e;
+  background-image: 
+    radial-gradient(circle at 18% 15%, rgba(184, 150, 90, 0.09) 0%, transparent 48%),
+    radial-gradient(circle at 82% 85%, rgba(214, 182, 126, 0.06) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, rgba(24, 24, 30, 0.6) 0%, transparent 75%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+}
+
+/* Warm Travertine & Alabaster Luxury Light Texture: Subtle limestone grain, champagne glow & vellum drafting lines */
+.bg-luxury-light {
+  background-color: #faf8f5;
+  background-image: 
+    radial-gradient(circle at 85% 12%, rgba(184, 150, 90, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 12% 88%, rgba(184, 150, 90, 0.045) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.85) 0%, transparent 70%),
+    linear-gradient(rgba(184, 150, 90, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184, 150, 90, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+}
+
+/* Subtle Gold Dust Accent Mesh */
+.gold-mesh-accent {
+  background-image: radial-gradient(circle at center, rgba(184, 150, 90, 0.12) 0%, transparent 70%);
+}

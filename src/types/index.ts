@@ -58,3 +58,46 @@ export interface WhyHinduraItem {
   description: string;
   icon: string;
 }
+
+export interface SectorItem {
+  id: string;
+  number: string;
+  title: string;
+  tagline: string;
+  description: string;
+  scope: string;
+  image: string;
+  deliverables: string[];
+}
+
+export interface PrefabTypology {
+  id: string;
+  number: string;
+  name: string;
+  tagline: string;
+  description: string;
+  bestFor: string;
+  image: string;
+  features: string[];
+}
+
+export interface LeadershipMember {
+  name: string;
+  role: string;
+  titleBadge?: string;
+  focus: string;
+  bio: string;
+  image: string;
+  location: string;
+  quote?: string;
+}
+
+export interface ServiceDivision {
+  id: string;
+  title: string;
+  summary: string;
+  services: {
+    name: string;
+    description: string;
+  }[];
+}
